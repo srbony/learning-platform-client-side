@@ -16,7 +16,18 @@ import { FaUserAlt } from "react-icons/fa";
 
 
 const Header = () => {
-    const { user } = useContext(AuthContext);
+    const { user, logOut } = useContext(AuthContext);
+
+    const handleLogOut = () => {
+        logOut()
+            .then(() => { })
+            .catch(error => console.error(error))
+    }
+
+
+
+
+
     return (
         <Navbar className='mb-4 drop-shadow-xl' collapseOnSelect expand="lg" bg="light" variant="light">
             <Container>
@@ -36,7 +47,26 @@ const Header = () => {
 
                     </Nav>
                     <Nav>
-                        <Nav.Link href="#deets">{user?.displayName}</Nav.Link>
+                        <Nav.Link href="#deets">
+
+                            {
+                                user?.uid ?
+                                    <>
+                                        <span> {user?.displayName}</span>
+                                        <Button onClick={handleLogOut} variant="primary">Logout</Button>
+                                    </>
+                                    :
+                                    <>
+
+                                       
+                                    </>
+                            }
+
+
+
+
+
+                        </Nav.Link>
                         <Nav.Link href="#deets">
                             {user?.photoURL ?
 
