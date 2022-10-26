@@ -5,6 +5,7 @@ import Header from '../Shared/Header/Header';
 import LeftSideNav from '../Shared/LeftSideNav/LeftSideNav';
 
 
+
 const Main = () => {
     return (
         <div>
@@ -17,6 +18,7 @@ const Main = () => {
                     <Col lg="7">
                         <Outlet></Outlet>
                     </Col>
+
 
                 </Row>
             </Container>
