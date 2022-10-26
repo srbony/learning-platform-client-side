@@ -6,6 +6,7 @@ import Courses from "../../Pages/Courses/Courses";
 import ErrorPage from "../../Pages/ErrorPage/Errorpage";
 import Faq from "../../Pages/Faq/Faq";
 import Home from "../../Pages/Home/Home";
+import LinkDetails from "../../Pages/LinkDettails/LinkDetails";
 import Login from "../../Pages/Login/Login/Login";
 import Register from "../../Pages/Login/Register/Register";
 
@@ -14,7 +15,7 @@ export const routes = createBrowserRouter([
     {
         path: '/',
         element: <Main></Main>,
-        errorElement: <ErrorPage></ErrorPage>,                                                       
+        errorElement: <ErrorPage></ErrorPage>,
         children: [
             {
                 path: '/',
@@ -28,11 +29,18 @@ export const routes = createBrowserRouter([
             },
             {
                 path: '/courses/:id',
-                loader: ({ params }) => fetch(`http://localhost:5000/allCourses/${params.id}`)
+                loader: ({ params }) => fetch(`http://localhost:5000/allCourses/${params.id}`),
+                element: <LinkDetails></LinkDetails>
+
             },
+            // {
+            //     path: '/category/:id',
+            //     element: <Category></Category>
+            // },
             {
-                path: '/category/:id',
-                element: <Category></Category>
+              
+                path: '/linkDetailse',
+                element: <LinkDetails></LinkDetails>
             },
             {
                 path: '/blog',

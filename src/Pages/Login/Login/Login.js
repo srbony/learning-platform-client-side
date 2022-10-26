@@ -14,7 +14,7 @@ import { useState } from 'react';
 
 const Login = () => {
     const [error, setError] = useState('')
-    const { providerLogin, signIn } = useContext(AuthContext);
+    const { providerLogin, signIn, createUser } = useContext(AuthContext);
     const googleProvider = new GoogleAuthProvider()
 
 
@@ -46,6 +46,18 @@ const Login = () => {
 
     }
 
+    const handleEmailPassword = (event) => {
+        event.preventDefault();
+        const form = event.target;
+        const email = form.email.value;
+        const password = form.password.value;
+        createUser(email, password)
+            .then(result => {
+                const user = result.user;
+                console.log(user);
+            })
+            .catch(error => console.error(error))
+    }
 
 
 
@@ -54,7 +66,7 @@ const Login = () => {
             <div>
                 <Button onClick={handleGoogleSignIn} variant="outline-secondary" className='mb-3'>Login with Google</Button>
                 <br></br>
-                <Button variant="outline-secondary" className='mb-3'>Login with Email and Password</Button>
+                <Button onClick={handleEmailPassword} variant="outline-secondary" className='mb-3'>Login with Email and Password</Button>
                 <br></br>
                 <Button variant="outline-secondary" className='mb-3'>Login with Github</Button>
             </div>

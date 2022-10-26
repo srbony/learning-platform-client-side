@@ -11,12 +11,15 @@ import { useContext } from 'react';
 import { AuthContext } from '../../Contexts/AuthProvider/AuthProvider';
 import { Image } from 'react-bootstrap';
 import { FaUserAlt } from "react-icons/fa";
+import { useState } from 'react';
 
 
 
 
 const Header = () => {
     const { user, logOut } = useContext(AuthContext);
+    const [btnState, setBtnState] = useState(false)
+    let toggleClass = btnState ? 'active' : 'null'
 
     const handleLogOut = () => {
         logOut()
@@ -24,6 +27,10 @@ const Header = () => {
             .catch(error => console.error(error))
     }
 
+
+    const handleClicked = () => {
+        setBtnState(btnState => !btnState);
+    }
 
 
 
@@ -58,7 +65,7 @@ const Header = () => {
                                     :
                                     <>
 
-                                       
+
                                     </>
                             }
 
@@ -76,7 +83,7 @@ const Header = () => {
                             }
                         </Nav.Link>
                         <Link to='/login'> <Button variant="outline-primary" className='me-2'>Login</Button></Link>
-                        <Button variant="outline-dark">Light/Dark</Button>
+                        <Button className={`btn${toggleClass}`} variant="outline-dark" onClick={handleClicked}>Light/Dark</Button>
                         <Nav.Link className="text-primary fw-bold">
                             <Link to='/blog' >Blog</Link>
                         </Nav.Link>

@@ -1,19 +1,30 @@
 import React from 'react';
+import Button from 'react-bootstrap/Button';
+import Card from 'react-bootstrap/Card';
+import { Link } from 'react-router-dom';
 
 const SingleCourse = ({ course }) => {
-    const { tittle, image } = course;
-    console.log(course)
+    const { tittle, image, id, description } = course;
+    // console.log(course)
     return (
-        <div>
+        <Card className="text-center mb-4 p-0">
 
-            <h2 className='text-2xl'>{tittle}</h2>
-            <div className='"grid grid-cols-2 '>
-                <div>
-                    <img className='w-50 rounded-md shadow-lg h-30' src={image} alt="" />
-                </div>
-            </div>
+            <Card.Body className=''>
+                <Card.Title>{tittle}</Card.Title>
+                <Card.Img variant="top" src={image} />
+                <Card.Text>
+                    {
+                        description?.length > 250 ?
+                            <p>{description.slice(0, 250) + '...'} <Link to={`/course/${id}`}>Read more...</Link> </p>
+                            :
+                            <p>{description}</p>
+                    }
 
-        </div>
+                </Card.Text>
+
+            </Card.Body>
+
+        </Card>
     );
 };
 
