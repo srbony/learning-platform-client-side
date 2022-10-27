@@ -36,7 +36,10 @@ const Register = () => {
         }
         updateUserProfile(profile)
             .then(() => { })
-            .catch(error => console.error(error));
+            .catch(error => {
+                console.error(error)
+                setError(error.message)
+            });
     }
 
 

@@ -9,14 +9,20 @@ import { AuthContext } from '../../../Contexts/AuthProvider/AuthProvider';
 import { ToastContainer, toast } from 'react-toastify';
 
 import Form from 'react-bootstrap/Form';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 
 
 const Login = () => {
-    const [error, setError] = useState('')
+    const [error, setError] = useState('');
+    const navigate = useNavigate();
+    const location = useLocation();
+
     const { providerLogin, signIn, createUser } = useContext(AuthContext);
     const googleProvider = new GoogleAuthProvider()
+
+    const from = location.state?.from?.pathname || '/';
+
 
 
     const handleGoogleSignIn = () => {
@@ -37,12 +43,15 @@ const Login = () => {
         const form = event.target;
         const email = form.email.value;
         const password = form.password.value;
+
+
         signIn(email, password)
             .then(result => {
                 const user = result.user;
                 console.log(user);
                 form.reset();
-                setError('')
+                setError('');
+                navigate(from, { replace: true });
             })
             .catch(error => console.error(error))
 

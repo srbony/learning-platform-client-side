@@ -22,7 +22,10 @@ const Course = () => {
                     </Card.Text>
 
                 </Card.Body>
-                <Button variant="outline-primary">Get premimum access</Button>
+                <Link to='/checkroute'>
+                    <Button variant="outline-primary">Get Premium Access</Button>
+                </Link>
+                
 
             </Card>
         </div>
