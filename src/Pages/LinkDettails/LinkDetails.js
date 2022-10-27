@@ -2,11 +2,11 @@ import React from 'react';
 import { useLoaderData } from 'react-router-dom';
 
 const LinkDetails = () => {
-    const courses = useLoaderData();
-    console.log(courses);
+    const allCpurses = useLoaderData()
+    console.log(allCpurses)
     return (
         <div>
-            <h2>linkdetails{courses.tittle}</h2>
+            <h2>details</h2>
         </div>
     );
 };

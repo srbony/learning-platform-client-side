@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useContext } from 'react';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
@@ -6,8 +6,9 @@ import { AuthContext } from '../../../Contexts/AuthProvider/AuthProvider';
 
 
 const Register = () => {
+    const [error, setError] = useState('')
 
-    const { createUser } = useContext(AuthContext)
+    const { createUser, updateUserProfile } = useContext(AuthContext)
 
     const handelSubmit = (event) => {
         event.preventDefault()
@@ -16,14 +17,26 @@ const Register = () => {
         const photoURL = form.photoURL.value;
         const email = form.email.value;
         const password = form.password.value;
-        console.log(name, photoURL, email, password);
+        // console.log(name, photoURL, email, password);
         createUser(email, password)
             .then(result => {
                 const user = result.user;
                 console.log(user);
+                setError('')
                 form.reset();
+                handleUserUpdateProfile(name, photoURL)
             })
             .catch(error => console.error(error))
+    }
+
+    const handleUserUpdateProfile = (name, photoURL) => {
+        const profile = {
+            displayName: name,
+            photoURL: photoURL
+        }
+        updateUserProfile(profile)
+            .then(() => { })
+            .catch(error => console.error(error));
     }
 
 
@@ -55,7 +68,7 @@ const Register = () => {
                 Register
             </Button>
             <Form.Text className="text-danger">
-
+                {error}
             </Form.Text>
 
 

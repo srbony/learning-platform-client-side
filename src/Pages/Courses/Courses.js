@@ -6,6 +6,9 @@ import SingleCourse from '../SingleCourse/SingleCourse';
 
 const Courses = () => {
     const courses = useLoaderData();
+    console.log(courses)
+    // const { id } = courses;
+
     // console.log(courses);
     return (
         <div>
@@ -26,7 +29,8 @@ const Courses = () => {
                         {
                             courses.map(course => <p
                                 key={course.id}>
-                                <Link to={`/course/${course.id}`}>{course.tittle}</Link>
+                                <Link to={`/allCourses/${course.id}`}>{course.tittle}</Link>
+                                {/* <Link to={`/${category.id}`}>{category.name}</Link> */}
                             </p>)
                         }
 

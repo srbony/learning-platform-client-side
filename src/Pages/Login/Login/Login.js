@@ -5,7 +5,8 @@ import React from 'react';
 import { useContext } from 'react';
 import Button from 'react-bootstrap/Button';
 import { AuthContext } from '../../../Contexts/AuthProvider/AuthProvider';
-import Toast from 'react-bootstrap/Toast';
+
+import { ToastContainer, toast } from 'react-toastify';
 
 import Form from 'react-bootstrap/Form';
 import { Link } from 'react-router-dom';
@@ -23,6 +24,7 @@ const Login = () => {
             .then(result => {
                 const user = result.user;
                 console.log(user);
+                toast.success('Login successfully')
             })
             .catch(error => {
                 console.error(error);
