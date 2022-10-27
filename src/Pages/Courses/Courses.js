@@ -1,7 +1,7 @@
 import React from 'react';
 import { Col, Container, Row } from 'react-bootstrap';
 import { Link, useLoaderData } from 'react-router-dom';
-import LinkDetails from '../LinkDettails/LinkDetails';
+
 import SingleCourse from '../SingleCourse/SingleCourse';
 
 const Courses = () => {
@@ -29,7 +29,7 @@ const Courses = () => {
                         {
                             courses.map(course => <p
                                 key={course.id}>
-                                <Link to={`/allCourses/${course.id}`}>{course.tittle}</Link>
+                                <Link to={`/course/${course.id}`}>{course.tittle}</Link>
                                 {/* <Link to={`/${category.id}`}>{category.name}</Link> */}
                             </p>)
                         }

@@ -2,7 +2,6 @@ import React from 'react';
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
-
 import { Link } from 'react-router-dom';
 import logo from '../../assets/images/logo.jpg';
 import LeftSideNav from '../LeftSideNav/LeftSideNav';
@@ -11,13 +10,18 @@ import { useContext } from 'react';
 import { AuthContext } from '../../Contexts/AuthProvider/AuthProvider';
 import { Image } from 'react-bootstrap';
 import { FaUserAlt } from "react-icons/fa";
-import { useState } from 'react';
+
+
+
 
 
 
 
 const Header = () => {
     const { user, logOut } = useContext(AuthContext);
+
+
+
 
 
 
@@ -36,11 +40,14 @@ const Header = () => {
     return (
         <Navbar className='mb-4 drop-shadow-xl' collapseOnSelect expand="lg" bg="light" variant="light">
             <Container>
+
                 <img className='' src={logo} style={{ width: 100, marginTop: -7 }} />
                 <Navbar.Brand href="#home" className="text-primary fw-bold">
 
                     Learning Management System
-                    <Button variant="outline-dark">Dark/Light</Button>
+                    <Button>
+                        dark/light
+                    </Button>
 
                 </Navbar.Brand>
 
@@ -95,7 +102,7 @@ const Header = () => {
 
                 </Navbar.Collapse>
             </Container>
-        </Navbar>
+        </Navbar >
     );
 };
 
